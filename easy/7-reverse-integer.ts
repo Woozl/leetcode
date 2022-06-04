@@ -10,7 +10,3 @@ function reverse(x: number): number {
     if((result < (-2)**31) || (result > (2**31) - 1)) return 0;
     return result;
 };
-
-console.log(reverse(-12345678));
-
-// -87654321
