@@ -26,11 +26,11 @@ function checkValid(matrix: number[][]): boolean {
     return true;
 };
 
-let board =
-[
-    [1, 2, 3],
-    [2, 3, 1],
-    [3, 1, 2]
-]
+// let board =
+// [
+//     [1, 2, 3],
+//     [2, 3, 1],
+//     [3, 1, 2]
+// ]
 
-console.log(checkValid(board));
+// console.log(checkValid(board));
