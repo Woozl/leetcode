@@ -15,6 +15,11 @@ const validRegion = (m: string[][], r1: number, c1: number, r2: number, c2: numb
 }
 
 function isValidSudoku(board: string[][]): boolean {
+    // columns
+    for(let col = 0; col < 9; ++col) {
+        if(!validRegion(board, 0, col, 8, col)) return false;
+    }
+    
     // blocks
     for(let row = 0; row < 9; row += 3) {
         for(let col = 0; col < 9; col += 3) {
@@ -25,11 +30,6 @@ function isValidSudoku(board: string[][]): boolean {
     // rows
     for(let row = 0; row < 9; ++row) {
         if(!validRegion(board, row, 0, row, 8)) return false;
-    }
-
-    // columns
-    for(let col = 0; col < 9; ++col) {
-        if(!validRegion(board, 0, col, 8, col)) return false;
     }
 
     return true;
