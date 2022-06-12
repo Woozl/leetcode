@@ -49,12 +49,12 @@ function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode
     return start.next;
 };
 
-let a = new ListNode(3, new ListNode(5, new ListNode(7))); // 3 5 7
-let b = new ListNode(2, new ListNode(4, new ListNode(6))); // 2 4 6 8
+// let a = new ListNode(3, new ListNode(5, new ListNode(7))); // 3 5 7
+// let b = new ListNode(2, new ListNode(4, new ListNode(6))); // 2 4 6 8
 
-let merged = mergeTwoLists(a, b);
+// let merged = mergeTwoLists(a, b);
 
-while(merged) {
-    console.log(merged.val);
-    merged = merged.next;
-}
+// while(merged) {
+//     console.log(merged.val);
+//     merged = merged.next;
+// }
