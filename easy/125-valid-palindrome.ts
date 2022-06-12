@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/valid-palindrome/
 
+//@ts-ignore
 function isPalindrome(s: string): boolean {
     s = s.toLowerCase().replace(/[^a-z0-9]*/g, '');
     console.log(s);

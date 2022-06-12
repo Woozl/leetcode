@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/palindrome-number/
 
+//@ts-ignore
 function isPalindrome(x: number): boolean {
     if(x < 0) return false;
 
