@@ -30,6 +30,7 @@ const linkedListFromArray = (array: Array<number>): ListNode | null => {
     return startNode;
 };
 
+// @ts-ignore
 class ListNode {
     val: number;
     next: ListNode | null;
