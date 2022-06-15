@@ -13,19 +13,40 @@ class TreeNode {
 }
 
 // bound by recursive call stack limit, stack based iterative is probably better
+// function invertTree(root: TreeNode | null): TreeNode | null {
+//     const preOrder = (node: TreeNode | null) => {
+//         if(node === null) return;
+
+//         const tmp = node.right;
+//         node.right = node.left;
+//         node.left = tmp;
+
+//         preOrder(node.left);
+//         preOrder(node.right);
+//     }
+
+//     preOrder(root);
+
+//     return root;
+// };
+
+// iterative solution
 function invertTree(root: TreeNode | null): TreeNode | null {
-    const preOrder = (node: TreeNode | null) => {
-        if(node === null) return;
+    if(root === null) return null;
 
-        const tmp = node.right;
-        node.right = node.left;
-        node.left = tmp;
+    let stack: TreeNode[] = [];
+    let current: TreeNode | null = root;
 
-        preOrder(node.left);
-        preOrder(node.right);
+    stack.push(current);
+    while(stack.length) {
+        const popped: TreeNode | null = stack.pop()!;
+        const left = popped.left;
+        popped.left = popped.right;
+        popped.right = left;
+
+        if(popped.left !== null) stack.push(popped.left);
+        if(popped.right !== null) stack.push(popped.right);
     }
 
-    preOrder(root);
-
     return root;
-};
+}
