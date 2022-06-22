@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/two-sum/
 
+//@ts-ignore
 function twoSum(nums: number[], target: number): number[] {
     let vals: any = {};
     let out: number[] = []

@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 
+//@ts-ignore
 function twoSum(numbers: number[], target: number): number[] {
     let low = 0, high = numbers.length - 1;
 
