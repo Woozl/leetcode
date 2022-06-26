@@ -20,7 +20,7 @@ function greatestLetter(s: string): string {
     return '';
 };
 
-console.log(greatestLetter("abDcdzefvghHijklVmn"))
+// console.log(greatestLetter("abDcdzefvghHijklVmn")) // V
 
 // 65: A
 // 97: a
