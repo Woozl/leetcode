@@ -3,39 +3,35 @@
 type Point = [number, number];
 
 function orangesRotting(grid: number[][]): number {
-    let start: Point | null = null;
+    const queue: Point[] = [];
 
     let hasRotten = false;
 
-    // find the initial rotten orange
-    for(let x = 0; x < grid[0].length && !start; ++x)
-        for(let y = 0; y < grid.length && !start; ++y)
+    // find the initial rotten oranges
+    for(let x = 0; x < grid[0].length; ++x)
+        for(let y = 0; y < grid.length; ++y)
             if(grid[y][x] === 2)
-                start = [x, y];
-    if(start) hasRotten = true;
+                queue.push([x, y]);
+
+    if(queue.length) hasRotten = true;
     
     // DFS keeping track of levels
     let time = -1;
-    if(hasRotten) {
-        const queue: Point[] = [];
-        queue.push(start!);
+    while(queue.length) {
+        const breadthLevel = queue.length;
         
-        while(queue.length) {
-            const breadthLevel = queue.length;
+        for(let i = 0; i < breadthLevel; ++i) {
+            const [x, y] = queue.shift()!;
             
-            for(let i = 0; i < breadthLevel; ++i) {
-                const [x, y] = queue.shift()!;
-                
-                if(x - 1 >= 0 && grid[y][x-1] === 1) queue.push([x - 1, y]) // West
-                if(y - 1 >= 0 && grid[y-1][x] === 1) queue.push([x, y - 1]) // North
-                if(x + 1 < grid[0].length && grid[y][x+1] === 1) queue.push([x + 1, y]) // East
-                if(y + 1 < grid.length && grid[y+1][x] === 1) queue.push([x, y + 1]) // South
-    
-                queue.forEach(([x, y]) => grid[y][x] = 2);
-            }
-            
-            ++time;
+            if(x - 1 >= 0 && grid[y][x-1] === 1) queue.push([x - 1, y]) // West
+            if(y - 1 >= 0 && grid[y-1][x] === 1) queue.push([x, y - 1]) // North
+            if(x + 1 < grid[0].length && grid[y][x+1] === 1) queue.push([x + 1, y]) // East
+            if(y + 1 < grid.length && grid[y+1][x] === 1) queue.push([x, y + 1]) // South
+
+            queue.forEach(([x, y]) => grid[y][x] = 2);
         }
+        
+        ++time;
     }
 
     let hasFresh = false;
@@ -58,6 +54,16 @@ let m = [
 // m = [
 //     [2, 1],
 //     [1, 1]
+// ]
+
+// m = [
+//     [2, 1, 1, 1, 0, 0, 1],
+//     [1, 1, 1, 0, 0, 1, 1],
+//     [1, 1, 1, 0, 0, 1, 1],
+//     [1, 1, 0, 0, 1, 2, 1],
+//     [1, 1, 0, 0, 1, 1, 1],
+//     [1, 1, 1, 0, 1, 1, 1],
+//     [1, 1, 1, 0, 1, 1, 1],
 // ]
 
 console.log(orangesRotting(m));
