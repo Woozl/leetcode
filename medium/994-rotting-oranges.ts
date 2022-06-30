@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/rotting-oranges/
 
+//@ts-ignore
 type Point = [number, number];
 
 function orangesRotting(grid: number[][]): number {
