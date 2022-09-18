@@ -8,17 +8,26 @@ function isPalindrome(s: string): boolean {
 }
 
 function longestPalindrome(s: string): string {
-    let longest: string = "";
-    for(let l = 0; l < s.length; ++l) {
-        for(let h = l; h < s.length; ++h) {
-            const current = s.slice(l, h + 1);
-            if(isPalindrome(current) && current.length > longest.length)
-                longest = current;
+    let longest: string = s[0];
+    const map = new Map<string, number[]>();
+    for(let i = 0; i < s.length; ++i) {
+        // letter already in map?
+        if(map.has(s[i])) {
+            for(const lowIndex of map.get(s[i])!) {
+                const testString = s.slice(lowIndex, i + 1);
+                if(isPalindrome(testString) && testString.length >= longest.length)
+                    longest = testString;
+            }
+
+            map.get(s[i])!.push(i);
+        }
+        else {
+            map.set(s[i], [i]);
         }
     }
 
     return longest;
 };
 
-// const str = "abracecarxyz";
-// console.log(longestPalindrome(str));
+const str = "abracecarxyz";
+console.log(longestPalindrome(str));
